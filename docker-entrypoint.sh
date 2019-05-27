@@ -26,6 +26,11 @@ parse(){
     # someone does `-- <(file_path)` at the end of running a container, but
     # need to validate this later down the road.
 
+  # TODO: use bind mount to access file
+  # body: use the `-v` option to bind mount a file to be allowed to be read
+    # by bashfuscator, so that way the file can be accessed from within the
+    # docker container. Throw error if not mounted
+
   parsed_string=()
   tmp_str=''
   oldIFS="${IFS}"
