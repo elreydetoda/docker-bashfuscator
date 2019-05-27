@@ -14,6 +14,11 @@ append_str(){
   export tmp_str
 
 }
+
+# TODO: finish parser
+# body: write a parser to interpret where commands being and end. Here are a few things to consider.
+  # parse **Program Options** [here](https://github.com/elreydetoda/docker-bashfuscator/blob/master/bashfuscator_options.md) which are necessary to the function of the program. 
+  # - these will tell you what you will be reading in from for the obfuscation
 parse(){
   # this function is to parse bashfuscation arguments, because docker
   # doesn't allow quotes from being passed through unless it is env variables
@@ -71,6 +76,10 @@ main(){
     *)
       echo "${@}"
       parse "${@}"
+      
+      # TODO: output command to stdout
+      # body: always append `--output -` to the end of a command so it is outputted to stdout and the user can append `-- | clipcopy` or `xclip` or whatever their clipboard manager is (i.e. `clip.exe` for windows or `pbcopy` for osx) so it get's copied to their clipboard.
+        # - the `--` at the end of the command will allow docker to realize that there are no more args getting passed to it. (i.e. `docker container run --rm -it bashfuscator -- | less`
       # "${bin_path}/bashfuscator" "$@"
       ;;
   esac
